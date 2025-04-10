@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="hero is-link">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">
+                    <img src="https://i.pinimg.com/736x/a7/2a/68/a72a68391d8a2a6eab9cfb106e4a28b2.jpg"  alt="Weather Icon" width="50" height="50">
+                    Weather App
+                </h1>
+                <h2 class="subtitle has-text-centered">
+                    Get the latest weather updates for your favorite cities.
+                </h2>   
+               <center><h1 class="title" font-size="50px" color="Black">
+                    "The sky's got something to say!"</h1></center>
+                
+            </div>
+        </div>
+    </section>
+    <section class="hero is-light">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button class="button is-success">
+                                    Add City
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for weather in weather_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather.temperature }}° F</span>
+                                        <br> {{ weather.description }}
+                                    </p>
+                                    <a href="{% url 'weatherapp:delete_city' weather.city %}" class="btn btn-danger mt-2">
+                                        Delete {{ weather.city }}
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% empty %}
+                    <p class="text-center">No cities added yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer has-background-primary-light mt-5 py-4">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Weather App</strong> by Narasimhadri N. Built with using Django, Python & OpenWeatherMap API.
+            </p>
+            <p>
+                 |
+                <a href="#">Contact</a> |
+                <a href="#">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+    
+</body>
+</html>

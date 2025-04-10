@@ -1,0 +1,17 @@
+body {
+    background-image: url('/images/"E:\django\dj21\myvenuv\weather\static\images\pexels-david-bartus-43782-1710355.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero,
+.section,
+.footer {
+    background-color: rgba(255, 255, 255, 0.85); /* semi-transparent white background for readability */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
