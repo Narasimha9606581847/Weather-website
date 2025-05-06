@@ -22,14 +22,11 @@ A simple and user-friendly weather application built with **Python Django** that
 - **JavaScript**: Used for frontend functionality (like dynamically displaying weather data)
 - **OpenWeatherMap API**: Provides real-time weather data
 - **SQLite**: Default database for the app (can be switched to PostgreSQL or MySQL)
+- Python 
 
-## 📦 Setup Instructions
 
-### 1. Clone the repository:
-```bash
-git clone https://github.com/your-username/weather-app-django.git
-cd weather-app-django
-## 🧪 Example
+
+🧪 Example
 
 ![Weather App Screenshot](![2025-05-06 (1)](https://github.com/user-attachments/assets/f84ec950-c55f-4883-92b6-80892b358feb)
 ) 
